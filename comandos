@@ -6,3 +6,5 @@ rails generate model <nome>
 rails generate rspec:model <nome>
 
 rails g migration add_name_desc_pb_ps_level_to_weapon name:string description:string pb:integer ps:integer level:integer
+
+rails g controller users index create --no-helper --no-assets --no-controller-specs --no-view-specs --skip-routes
