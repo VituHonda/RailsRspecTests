@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :weapon do
+    name {Faker::Name.first_name}
     level {1}
     xp {0}
     pb {100}
