@@ -32,6 +32,18 @@ RSpec.describe Weapon, type: :model do
     expect(weapon.power).to_not eq(100)
   end
 
+  it "has a starting title" do
+    expect(weapon.title).to eq("#{weapon.name} ##{weapon.level}")
+  end
 
+  it "has a rare description" do
+    weapon = build(:weapon, ps: 70)
+    expect(weapon.description).to eq("arma rara")
+  end
+
+  it "has a comum description" do
+    weapon = build(:weapon, ps: 30)
+    expect(weapon.description).to eq("arma comum")
+  end
 
 end
