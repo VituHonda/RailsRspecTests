@@ -1,6 +1,5 @@
 require 'rails_helper'
 require 'spec_helper.rb'
-require 'user'
 require 'faker'
 
 RSpec.describe User, type: :model do
@@ -37,6 +36,11 @@ RSpec.describe User, type: :model do
     user = User.new(nickname: name, kind: kind, level: level)
 
     expect(user.title).to eq("#{user.kind} #{user.nickname} ##{user.level}")
+  end
+
+  it "v3 with factory bot is valid if the level is not between 1 and 99" do
+    user = build(:user, level: level)
+    expect(user).to_not be_valid
   end
 
 end
