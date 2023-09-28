@@ -25,12 +25,18 @@ RSpec.describe User, type: :model do
 
   it "v2 is valid if the level is not between 1 and 99" do
     user = User.new(nickname: name, kind: kind, level: level)
-    # puts user.nickname
-    # puts user.kind
-    # puts user.level
+
     expect(user).to_not be_valid
   end
 
+  it "v2 returns the correct hero title" do
+    # local = Faker::Name.first_name
+    # local1 = %i[knight wizard].sample
+    # local2 = Faker::Number.within(range: 100..9999)
 
+    user = User.new(nickname: name, kind: kind, level: level)
+
+    expect(user.title).to eq("#{user.kind} #{user.nickname} ##{user.level}")
+  end
 
 end
