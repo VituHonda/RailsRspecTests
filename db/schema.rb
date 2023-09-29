@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_184917) do
     t.datetime "updated_at", null: false
     t.string "nickname"
     t.integer "kind"
-    t.integer "leve"
+    t.integer "level"
   end
 
   create_table "weapons", force: :cascade do |t|
