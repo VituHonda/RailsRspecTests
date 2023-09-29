@@ -10,3 +10,8 @@ rails g migration add_name_desc_pb_ps_level_to_weapon name:string description:st
 
 
 rails g controller users index create --no-helper --no-assets --no-controller-specs --no-view-specs --skip-routes
+
+
+rails g controller enemies update destroy --no-helper --no-assets --no-controller-specs --no-view-specs --skip-routes
+rails g model enemy name:string power_base:integer power_step:integer level:integer kind:integer
+rails generate rpsec:request Enemy
