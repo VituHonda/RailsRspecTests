@@ -4,10 +4,9 @@ RSpec.describe "Enemies", type: :request do
   let(:enemy) {create(:enemy)}
   let(:enemy_attributes) {attributes_for(:enemy)}
 
-  before(:each) {put "/enemies/#{enemy.id}", params: enemy_attributes}
-
   describe "PUT /enemies" do
     context 'when the enemy exists' do
+      before(:each) {put "/enemies/#{enemy.id}", params: enemy_attributes}
       it 'return status code 200' do
         expect(response).to have_http_status(200)
       end
@@ -19,12 +18,11 @@ RSpec.describe "Enemies", type: :request do
       end
     end
     context 'when the enemy does not exist' do
+      before(:each) {put '/enemies/0', params: attributes_for(:enemy)}
       it 'returns status code 404' do
-        put '/enemies/0', params: attributes_for(:enemy)
         expect(response).to have_http_status(404)
       end
       it 'returns a not found message' do
-        put '/enemies/0', params: attributes_for(:enemy)
         # puts response.body
         expect(response.body).to match(/Couldn't find Enemy/)
       end
@@ -33,22 +31,20 @@ RSpec.describe "Enemies", type: :request do
 
   describe 'DELETE /enemies' do
     context 'when the enemy exists' do
+    before(:each) {delete "/enemies/#{enemy.id}"}
       it 'returns status code 204' do
-        delete "/enemies/#{enemy.id}"
         expect(response).to have_http_status(204)
       end
       it 'destroy the record' do
-        delete "/enemies/#{enemy.id}"
         expect{enemy.reload}.to raise_error ActiveRecord::RecordNotFound
       end
     end
     context 'when the enemy does not exist' do
+    before(:each) {delete "/enemies/0"}
       it 'returns status code 404' do
-        delete '/enemies/0'
         expect(response).to have_http_status(404)
       end
       it 'returns a not found message' do
-        delete '/enemies/0'
         expect(response.body).to match(/Couldn't find Enemy/)
       end
     end
