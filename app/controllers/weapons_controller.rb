@@ -7,8 +7,8 @@ class WeaponsController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    redirect_to users_path
+    @weapon = Weapon.create(weapon_params)
+    redirect_to weapon_path
   end
 
   def show
