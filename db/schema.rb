@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_29_190125) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_02_193503) do
   create_table "enemies", force: :cascade do |t|
     t.string "name"
     t.integer "power_base"
@@ -37,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_29_190125) do
     t.integer "pb"
     t.integer "ps"
     t.integer "level"
+    t.integer "xp"
   end
 
 end

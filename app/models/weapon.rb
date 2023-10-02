@@ -1,12 +1,7 @@
 class Weapon < ApplicationRecord
 
-  # atributos
-#   power_base
-#   power_step
-#   level
-#   métodos
-#   current_power - (power_base + ((level-1)*power_step))
-#   title "nome_da_arma #level_da_arma "
+  validates :level, numericality: {greater_than: 0, less_than_or_equal_to: 99}
+  validates_presence_of :name, :pb, :ps, :description, :xp
 
   def power
     (self.pb + ((self.level-1) * self.ps))
